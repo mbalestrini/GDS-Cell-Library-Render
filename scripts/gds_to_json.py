@@ -8,10 +8,6 @@ import gdspy # open gds file
 import argparse
 
 
-
-
-
-
 argparser = argparse.ArgumentParser(description='Convert GDSII files into json.')
 argparser.add_argument('-l', "--layerstack_file", required=True, help="Layer stack json file")
 argparser.add_argument('-g', "--gds_file", required=True, help="GDS file")
@@ -19,14 +15,6 @@ argparser.add_argument('-o', "--output_path", required=False, help="Path to put 
 
 
 args = vars(argparser.parse_args())
-print(args)
-
-
-# # get the input file name
-# if len(sys.argv) < 2: # sys.argv[0] is the name of the program
-#     print("Error: need exactly one file as a command line argument.")
-#     sys.exit(0)
-#gdsii_file_path = sys.argv[1]
 
 
 def create_layer(layerid):
@@ -41,10 +29,18 @@ def create_layer(layerid):
 layerstack_file_path = args["layerstack_file"]
 gdsii_file_path = args["gds_file"]
 
-if(args["output_path"]==None):
+if(args["output_path"]==None):    
     output_file_path = os.path.dirname(gdsii_file_path)
 else:
     output_file_path = args["output_path"]
+
+    try:
+        os.makedirs(output_file_path, exist_ok = True)
+        #print("Output directory '%s' created successfully" % output_file_path)
+    except OSError as error:
+        print("Output directory '%s' can not be created" % output_file_path)
+        exit()
+
 
  
 
@@ -109,10 +105,12 @@ for cell in gdsii: # loop through cells to read paths and polygons
 
     # Write Cell json
     output_filename = cell.name + ".json"
+
+    cell_output = {"name" : cell.name , "bounding_box" : cell.get_bounding_box().tolist(), "layers" : output_layers}
+
     print("Writing", output_filename,  "...")
     output_json_file = open(os.path.join(output_file_path, output_filename), "w")
-    json.dump(output_layers, output_json_file)
+    json.dump(cell_output, output_json_file)
     output_json_file.close()
 
 
-#res[list(res.keys())[3]][0].tolist()
