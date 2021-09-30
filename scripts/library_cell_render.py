@@ -21,15 +21,19 @@ import argparse
 
 print(sys.argv)
 
+# If the script was executed from the command line we read the parameters after the "--" 
+if("--" in sys.argv):
+    script_argv = sys.argv[sys.argv.index("--") + 1 : ].copy()
+else:
+    script_argv = sys.argv.copy()
 
-script_argv = sys.argv[sys.argv.index("--") + 1 : ].copy()
 argparser = argparse.ArgumentParser()
 argparser.add_argument('-i', "--input_json", required=False, help="Input GDS json file")
 argparser.add_argument('-o', "--output_path", required=False, help="Path to put the generated render files")
 argparser.add_argument('-s', "--scale", required=False, type=float,  help="Scaling multiplier of input geometry")
-
-
-args = vars(argparser.parse_args(script_argv))
+#args = vars(argparser.parse_args(script_argv))
+args = vars(argparser.parse_known_args(script_argv)[0])
+    
 
 
 # input_cell_json_path might be defined inside blender when running the script from the IDE
@@ -238,7 +242,7 @@ def executeRender(filename, render) :
     render.filepath = filename
 
     print("Rendering "+filename + " ...")
-    bpy.ops.render.render(write_still=True, use_viewport=False)
+    #bpy.ops.render.render(write_still=True, use_viewport=False)
 
 def changeLayersVisibility(layer_id_array, hide=True):
     for lid in layer_id_array:
