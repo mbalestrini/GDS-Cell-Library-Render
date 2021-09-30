@@ -1,5 +1,5 @@
 #!/bin/sh
-OUTPUT_PATH="./renders/sky130_fd_sc_hd-latest/"
+OUTPUT_PATH="./example_renders/sky130_fd_sc_hd-latest/"
 SCALE=1.0
 
 for file in ./gds/sky130_fd_sc_hd-json/*.json

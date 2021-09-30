@@ -1,5 +1,5 @@
 #!/bin/sh
-OUTPUT_PATH="./renders/librecell-latest/"
+OUTPUT_PATH="./example_renders/librecell-latest/"
 SCALE=0.1
 
 for file in ./gds/librecell-json/*.json
