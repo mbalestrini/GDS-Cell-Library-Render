@@ -242,7 +242,7 @@ def executeRender(filename, render) :
     render.filepath = filename
 
     print("Rendering "+filename + " ...")
-    #bpy.ops.render.render(write_still=True, use_viewport=False)
+    bpy.ops.render.render(write_still=True, use_viewport=False)
 
 def changeLayersVisibility(layer_id_array, hide=True):
     for lid in layer_id_array:
