@@ -1,0 +1,24 @@
+{
+    "200/0" : "",
+    
+    "1/0" : "ndiff",
+    "1/7" : "pdiff",
+    
+    "2/0" : "nwell",
+    "2/7" : "pwell",
+    
+    "3/0" : "poly",
+
+    "4/0" : "poly_contact",
+    "5/0" : "diff_contact",
+
+    "6/0" : "met1",
+    "6/1" : "met1_label",
+    "6/2" : "met1_pin",
+
+    "7/0" : "via",
+    "8/0" : "met2",
+    "8/1" : "met2_label",
+    "8/2" : "met2_pin"
+    
+}
