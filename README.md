@@ -16,7 +16,8 @@ ELABORATE: Alternatively you can use the TEMPLATE_XXXX.blender files as an examp
 
 ELABORATE: How to run the script internally in blender with some json file
 
-ELABORATE: Internal parameters at the beginning of the `library_cell_render.py` file
+ELABORATE: Internal parameters at the beginning of the `library_cell_render.py` file (ex: changing render resolution)
+
 TODO: example call to `gds_to_json.py`
 
 TODO: example render call (`./run_sky130_fd_sc_hd__renders.sh` )
