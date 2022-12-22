@@ -73,6 +73,9 @@ for cell in gdsii: # loop through cells to read paths and polygons
     if cell.name == '$$$CONTEXT_INFO$$$':
         continue # skip this cell
 
+    if cell.name == '(UNNAMED)':
+        continue
+
     # combine will all referenced cells (instances, SREFs, AREFs, etc.)
     cell = cell.flatten()
 
@@ -105,10 +108,12 @@ for cell in gdsii: # loop through cells to read paths and polygons
 
     # Write Cell json
     output_filename = cell.name + ".json"
+    print("Writing", output_filename,  "...")
 
+    
     cell_output = {"name" : cell.name , "bounding_box" : cell.get_bounding_box().tolist(), "layers" : output_layers}
 
-    print("Writing", output_filename,  "...")
+    
     output_json_file = open(os.path.join(output_file_path, output_filename), "w")
     json.dump(cell_output, output_json_file)
     output_json_file.close()

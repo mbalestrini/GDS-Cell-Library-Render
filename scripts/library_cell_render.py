@@ -12,7 +12,7 @@ C = bpy.context
 SCALE = 1.0
 SKIP_UNNAMED_LAYERS = True
 EXCLUDE_LAYER_IDS = [] #["67/5"]
-RESOLUTION_PERCENTAGE = 50
+RESOLUTION_PERCENTAGE = 100
 
 
 
@@ -180,7 +180,8 @@ i = 0.0
 for obj in cell_collection.objects:
     if (obj.type=="EMPTY"):        
         # obj.location.z = i
-        obj_name = obj.name.lower()
+        # obj_name = obj.name.lower()
+        obj_name = obj.name
         gds_layer_name = obj_name
         
         if(obj_name.find(".")>0):
